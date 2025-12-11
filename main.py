@@ -1,6 +1,7 @@
 # ...existing code...
 import tkinter as tk
-from database import InventoryDB
+from gul_andam_backend.database import InventoryDB
+
 from ui import InventoryUI
 
 if __name__ == "__main__":
