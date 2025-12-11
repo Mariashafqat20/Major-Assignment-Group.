@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Inventory Report - Gul Andam</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <main class="container">
+    <h1>Inventory Summary Report</h1>
+    <button id="loadReport">Load Report</button>
+    <pre id="summary" style="margin-top:12px;"></pre>
+  </main>
+
+  <script>
+    const API = "http://127.0.0.1:5001";
+    document.getElementById('loadReport').addEventListener('click', async () => {
+      const res = await fetch(API + "/report/summary");
+      const data = await res.json();
+      document.getElementById('summary').innerText = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
