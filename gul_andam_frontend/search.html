@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Search Inventory - Gul Andam</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <main class="container">
+    <h1>Search Products</h1>
+    <div>
+      <input id="searchBox" placeholder="Enter keyword..." />
+      <button id="searchBtn">Search</button>
+    </div>
+    <pre id="results" style="white-space:pre-wrap;margin-top:12px;"></pre>
+  </main>
+
+  <script>
+    const API = "http://127.0.0.1:5001";
+    document.getElementById('searchBtn').addEventListener('click', async () => {
+      const key = encodeURIComponent(document.getElementById('searchBox').value || '');
+      const res = await fetch(API + "/search?keyword=" + key);
+      const data = await res.json();
+      document.getElementById('results').innerText = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
